@@ -1,0 +1,452 @@
+{
+	"info": {
+		"_postman_id": "11739752-ae0c-4b6d-9636-ba071b57ffdc",
+		"name": "MarketX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38950441"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"piblo\",\n    \"email\": \"fafa@gmail.com\",\n    \"password\": \"test124\",\n    \"password_confirmation\": \"test124\",\n    \"postal_code\": \"31000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/auth/register",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"zaza@gmail.com\",\n    \"password\": \"test124\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/auth/login",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/logout",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/auth/",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"auth",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shoes",
+			"item": [
+				{
+					"name": "search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/shoes?brand=E",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"shoes"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "E"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add To Market",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "MQ.JvLyF_qY9Hr1m9iQv0r__mGW9ipWOU_Ff-u58RSsD-FWWa866Se7P_1PEnoA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Nike\",\n    \"model\": \"Air Jordan 4\",\n    \"size\": 42,\n    \"price\": 400,\n    \"condition\": 9,\n    \"inStock\": true,\n    \"delivery\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/shoes/create",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"shoes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update our shoes",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Nikezzz\",\n    \"model\": \"Air Jordan 4\",\n    \"size\": 42,\n    \"price\": 400,\n    \"condition\": 9,\n    \"inStock\": true,\n    \"delivery\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/shoes/update/1",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"shoes",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/cart/show",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"cart",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Nike\",\n    \"model\": \"Air Jordan 4\",\n    \"size\": 42,\n    \"price\": 400,\n    \"condition\": 9,\n    \"inStock\": true,\n    \"delivery\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/cart/add/3",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"cart",
+								"add",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Nikezzz\",\n    \"model\": \"Air Jordan 4\",\n    \"size\": 42,\n    \"price\": 400,\n    \"condition\": 9,\n    \"inStock\": true,\n    \"delivery\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/cart/remove/1",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"cart",
+								"remove",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clear",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Nikezzz\",\n    \"model\": \"Air Jordan 4\",\n    \"size\": 42,\n    \"price\": 400,\n    \"condition\": 9,\n    \"inStock\": true,\n    \"delivery\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/cart/clear",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"cart",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "checkout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/orders/checkout",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"orders",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/orders/show",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"orders",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/orders/update-status/1",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"orders",
+								"update-status",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/orders/1/status-history",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"orders",
+								"1",
+								"status-history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_BASE",
+			"value": "http://localhost:3333/api",
+			"type": "string"
+		}
+	]
+}
