@@ -122,78 +122,10 @@ http://localhost:3333/docs
 ### **Commandes**
 | Verbe | Route                    | Description                          |
 |-------|--------------------------|--------------------------------------|
-| GET   | /orders                  | Liste des commandes                  |
-| GET   | /orders/:id              | Détails d'une commande              |
-| PATCH | /orders/:id/status       | Mettre à jour le statut d'une commande |
-
----
-
-## 🗃 Modèles de Base de Données
-
-### **User (utilisateur)**
-```ts
-id: number
-name: string
-email: string
-password: string
-postal_code: number
-purchases_count: number
-sales_count: number
-total_spent: number
-total_earned: number
-```
-
-### **Shoe (chaussure)**
-```ts
-id: number
-brand: string
-model: string
-size: number
-price: number
-condition: number
-inStock: boolean
-delivery: boolean
-userId: number
-```
-
-### **Cart (panier)**
-```ts
-id: number
-userId: number
-totalPrice: number
-```
-
-### **CartItem (article dans le panier)**
-```ts
-id: number
-cartId: number
-shoeId: number
-price: number
-```
-
-### **Order (commande)**
-```ts
-id: number
-userId: number
-totalPrice: number
-status: string
-```
-
-### **OrderItem (article dans une commande)**
-```ts
-id: number
-orderId: number
-shoeId: number
-price: number
-```
-
-### **OrderStatus (historique des statuts)**
-```ts
-id: number
-order_id: number
-status: string
-created_at: DateTime
-```
+| GET   | /orders/show                  | Liste des commandes de l'utilisateur                 |
+| GET   | /orders/checkout              | Passer une commande              |
+| POST | /orders/update-status/:id       | Mettre à jour le statut d'une commande |
+| GET | /orders/:id/status-history       | Mettre à jour le statut d'une commande |
 
 ---
 
