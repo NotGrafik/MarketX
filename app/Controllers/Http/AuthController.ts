@@ -1,6 +1,20 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class AuthController {
+    /**
+     * @login
+     * @operationId login as User
+     * @description Créer un nouveau token d'authentification lié à un compte (se connecter).
+     * @requestBody { "email": "string", "password": "string" }
+     * @responseBody 200 - { "message": "Connexion réussie", "token": "string",
+     * "user": "<User>" }
+     * @responseBody 400 - { "message": "Les champs email et mot de passe sont requis." }
+     * @responseBody 401 - { "message": "L'adresse email fournie n'existe pas." }
+     * @responseBody 401 - { "message": "Le mot de passe est incorrect." }
+     * @responseBody 401 - { "message": "Vous êtes déjà connecté." }
+     * @responseBody 500 - { "message": "Une erreur est survenue lors de la tentative de connexion.",
+     * "error": "string", "error_code": "string" }
+    */
     public async login({ request, auth, response }: HttpContextContract) {
         const { email, password } = request.only(['email', 'password'])
 
@@ -14,7 +28,7 @@ export default class AuthController {
         try {
             // Authentifie l'utilisateur et génère un token
             const token = await auth.use('api').attempt(email, password, {
-                expiresIn: '7days',
+                expiresIn: '1hour'
             })
 
             return response.ok({
@@ -45,6 +59,14 @@ export default class AuthController {
             })
         }
     }
+
+    /**
+     * @logout
+     * @operationId logout User
+     * @description Déconnecte un utilisateur en invalidant son token d'authentification.
+     * @responseBody 200 - { "message": "Déconnexion réussie" }
+     * @responseBody 500 - { "message": "Une erreur est survenue lors de la tentative de déconnexion" }
+     */
 
     public async logout({ auth, response }: HttpContextContract) {
         try {

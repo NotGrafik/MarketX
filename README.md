@@ -54,9 +54,6 @@ MYSQL_DB_NAME=marketx_db
 ```
 
 ### 4. Lancer la base de données (Docker)
-```bash
-docker-compose up -d
-```
 
 ### 5. Créer les tables et remplir avec des données par défaut
 ```bash
